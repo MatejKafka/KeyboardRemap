@@ -4,6 +4,8 @@ My custom keyboard remap, in two versions:
  1) The main version uses a combination of [Capsicain](https://github.com/cajhin/capsicain) and [AutoHotkey v1](https://www.autohotkey.com/), which is more reliable.
  2) The old version is AutoHotkey-only; it is  not maintained, but currently still mostly up-to-date with the main version.
 
+**TODO: add a keyboard diagram with the layers**
+
 ## Notable features
 
 This is just an overview, for the current exact bindings, read the source code. :)
@@ -29,3 +31,4 @@ Apologies, this is not very streamlined. If you want to try the config and somet
 First, start Capsicain by moving/symlinking the `capsicain.ini` from this repo to the Capsicain installation dir and then running `capsicain.exe`.
 
 Second, start the AutoHotkey part by running `./ahk/compiled/capsicain.ahk` directly using AutoHotkey. Alternatively, install [`js2ahk`](https://github.com/MatejKafka/js2ahk) (mostly abandoned, but I still use it), adjust the path in `./ahk/ahkCapsicain.cmd` and then run it — it compiles the `capsicain.ahk.js` file and then runs the resulting `capsicain.ahk` file.
+
