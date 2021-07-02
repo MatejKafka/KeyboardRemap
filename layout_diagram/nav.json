@@ -1,0 +1,93 @@
+[
+  [
+    {
+      "y": 1,
+      "x": 1.5,
+      "c": "#fff200",
+      "t": "#ff0000"
+    },
+    "Browser mode on",
+    {
+      "x": 1,
+      "c": "#cccccc",
+      "t": "#000000"
+    },
+    "PgUp",
+    {
+      "x": 4
+    },
+    "Arrow\n\n\n\n\n\nLeft"
+  ],
+  [
+    {
+      "x": 1.75
+    },
+    "Esc",
+    "PgDown",
+    "Home",
+    "End",
+    {
+      "x": 2
+    },
+    "Arrow\n\n\n\n\n\nDown",
+    "Arrow\n\n\n\n\n\nUp",
+    "Arrow\n\n\n\n\n\nRight",
+    {
+      "c": "#55ff00",
+      "t": "#ff0000"
+    },
+    "Mod\n\n\n\n\n\nNav"
+  ],
+  [
+    {
+      "c": "#aaaaaa",
+      "t": "#000000",
+      "w": 1.25
+    },
+    "Shift",
+    {
+      "c": "#55ff00",
+      "t": "#ff0000"
+    },
+    "Mod\n\n\n\n\n\nNav",
+    {
+      "c": "#cccccc",
+      "t": "#000000"
+    },
+    "Arrow\n\n\n\n\n\nLeft",
+    "Arrow\n\n\n\n\n\nUp",
+    "Arrow\n\n\n\n\n\nDown",
+    "Arrow\n\n\n\n\n\nRight",
+    {
+      "x": 6,
+      "c": "#adb0ff",
+      "t": "#0000ff",
+      "w": 2.75
+    },
+    "Close active window"
+  ],
+  [
+    {
+      "c": "#aaaaaa",
+      "t": "#000000",
+      "w": 1.25
+    },
+    "Ctrl",
+    {
+      "x": 1.25,
+      "w": 1.25
+    },
+    "Alt",
+    {
+      "c": "#cccccc",
+      "w": 6.25
+    },
+    "Enter",
+    {
+      "x": 1.25,
+      "c": "#aaaaaa",
+      "w": 1.25
+    },
+    "Ctrl"
+  ]
+]

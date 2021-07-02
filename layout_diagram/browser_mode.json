@@ -1,0 +1,223 @@
+[
+  [
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff"
+    },
+    "Macro key",
+    {
+      "c": "#fff200",
+      "t": "#ff0000"
+    },
+    "Browser mode off",
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff"
+    },
+    "Left virtual desktop",
+    {
+      "c": "#e8b971",
+      "t": "#000000"
+    },
+    "Focus address bar",
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff"
+    },
+    "Right virtual desktop",
+    "Alt-Tab",
+    {
+      "x": 3,
+      "c": "#e8b971",
+      "t": "#000000"
+    },
+    "Previous tab",
+    "Next tab",
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff"
+    },
+    "reddit",
+    "!g ddg",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "w": 2
+    },
+    "Backspace"
+  ],
+  [
+    {
+      "w": 1.5
+    },
+    "Tab",
+    {
+      "c": "#e8b971"
+    },
+    "Reload page",
+    {
+      "c": "#ffafea"
+    },
+    "Arrow Left",
+    "PgUp",
+    "Arrow Right",
+    {
+      "c": "#e8b971"
+    },
+    "Previous tab",
+    {
+      "c": "#cccccc"
+    },
+    "Play / Pause (Space)",
+    {
+      "c": "#e8b971"
+    },
+    "Autofill Bitwarden credentials",
+    {
+      "c": "#ffafea"
+    },
+    "Arrow Left",
+    {
+      "c": "#cccccc"
+    },
+    "Video fullscreen (F key)",
+    {
+      "c": "#e8b971"
+    },
+    "New private window",
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff"
+    },
+    "Left virtual desktop",
+    "Right virtual desktop",
+    {
+      "x": 0.25,
+      "c": "#cccccc",
+      "t": "#000000",
+      "w": 1.25,
+      "h": 2,
+      "w2": 1.5,
+      "h2": 1,
+      "x2": -0.25
+    },
+    "Enter"
+  ],
+  [
+    {
+      "c": "#55ff00",
+      "t": "#ff0000",
+      "w2": 1.75
+    },
+    "Mod\n\n\n\n\n\nSpecialChars",
+    {
+      "x": 0.75,
+      "c": "#ffafea",
+      "t": "#000000"
+    },
+    "Esc",
+    "PgDown",
+    "Arrow Up",
+    "Arrow Down",
+    {
+      "c": "#e8b971"
+    },
+    "Next tab",
+    "New tab",
+    {
+      "c": "#ffafea"
+    },
+    "Arrow Down",
+    "Arrow Up",
+    "Arrow Right",
+    {
+      "c": "#55ff00",
+      "t": "#ff0000"
+    },
+    "Mod\n\n\n\n\n\nOriginal",
+    {
+      "c": "#fff200"
+    },
+    "Browser mode toggle",
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff"
+    },
+    "Win"
+  ],
+  [
+    {
+      "c": "#aaaaaa",
+      "t": "#000000",
+      "w": 1.25
+    },
+    "Shift",
+    {
+      "c": "#55ff00",
+      "t": "#ff0000"
+    },
+    "Mod\n\n\n\n\n\nOriginal",
+    {
+      "c": "#cccccc",
+      "t": "#000000"
+    },
+    "Undo",
+    {
+      "c": "#e8b971"
+    },
+    "Open in new tab",
+    {
+      "c": "#cccccc"
+    },
+    "Copy",
+    "Paste",
+    {
+      "c": "#e8b971"
+    },
+    "Close tab",
+    "New window",
+    "New tab",
+    {
+      "x": 3,
+      "c": "#adb0ff",
+      "t": "#0000ff",
+      "w": 2.75
+    },
+    "Minimize active window"
+  ],
+  [
+    {
+      "c": "#aaaaaa",
+      "t": "#000000",
+      "w": 1.25
+    },
+    "Ctrl",
+    {
+      "c": "#cccccc",
+      "w": 1.25
+    },
+    "Win",
+    {
+      "c": "#aaaaaa",
+      "w": 1.25
+    },
+    "Alt",
+    {
+      "c": "#ffafea",
+      "w": 6.25
+    },
+    "Enter",
+    {
+      "c": "#adb0ff",
+      "t": "#0000ff",
+      "w": 1.25
+    },
+    "Context menu",
+    {
+      "c": "#aaaaaa",
+      "t": "#000000",
+      "w": 1.25
+    },
+    "Ctrl"
+  ]
+]

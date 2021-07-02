@@ -1,0 +1,31 @@
+[
+  [
+    {
+      "x": 1
+    },
+    "ů\nŮ",
+    "ě\nĚ",
+    "š\nŠ",
+    "č\nČ",
+    "ř\nŘ",
+    "ž\nŽ",
+    "ý\nÝ",
+    "á\nÁ",
+    "í\nÍ",
+    "é\nÉ"
+  ],
+  [
+    {
+      "y": 2,
+      "x": 1,
+      "w": 7,
+      "h": 2
+    },
+    "pres Shift to type the upper char\n\n\n\n\n\nPress Ctrl-Shift to type the lower char",
+    {
+      "x": 1.25
+    },
+    "— (em-dash)",
+    "–&nbsp&nbsp (en-dash)"
+  ]
+]
