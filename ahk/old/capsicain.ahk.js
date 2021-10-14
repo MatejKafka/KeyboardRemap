@@ -101,7 +101,7 @@ mapKeyToShortcut(['Win', 'w'], 'notepad++.exe', 'Notepad++')
 mapKeyToShortcut(['Win', 'f'], 'firefox.exe', 'Firefox')
 mapKeyToShortcut(['Win', 'z'], 'Telegram.exe', 'Telegram')
 mapKeyToShortcut(['Win', 'k'], 'ProcessHacker.exe', 'ProcessHacker')
-mapKeyToShortcut(['Win', 't'], 'clion64.exe', 'CLion 2020.3.3')
+mapKeyToShortcut(['Win', 't'], 'clion64.exe', 'CLion 2021.2.1')
 
 const SHORTCUT_DIR = __dirname + "/../../data/shortcuts/"
 mapKeyToProgram(['Win', 's'], 'salamand.exe', SHORTCUT_DIR + 'Altap Salamander (x64).lnk')

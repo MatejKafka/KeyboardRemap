@@ -1,42 +1,25 @@
 ﻿#SingleInstance Force
 
-Gui, switcher:New
+gui_switcher := Gui()
+gui_switcher.Opt("+AlwaysOnTop +ToolWindow -DPIScale -0xC00000 +E0x08000000")
+gui_switcher.BackColor := 0x900000
+gui_switcher.Show("Hide x0 y1030 w1920 h50")
 
-Gui, switcher:+AlwaysOnTop +ToolWindow -DPIScale -0xC00000 +E0x08000000
+gui_indicator := Gui()
+gui_indicator.Opt("+AlwaysOnTop +ToolWindow -DPIScale -0xC00000 +E0x08000000")
+gui_indicator.BackColor := 0x900000
+gui_indicator.Show("x1899 y1030 w21 h50")
 
-Gui, switcher:Color, 0x900000
 
-Gui, switcher:Show, x0 y1030 w1920 h50 Hide
+^F12::ExitApp
 
-Gui, switcher:+LastFound
-
-guiID := WinExist()
-
-Gui, indicator:New
-
-Gui, indicator:+AlwaysOnTop +ToolWindow -DPIScale -0xC00000 +E0x08000000
-
-Gui, indicator:Color, 0x900000
-
-Gui, indicator:Show, x1899 y1030 w21 h50 NA
-
-^F12::
-	ExitApp
-return
-
-; hotkey: +F16::!F4
-	+F16::
-		SendInput, {Blind}{Alt Down}{F4 Down}
-	return
-	+F16 Up::
-		SendInput, {Blind}{Alt Up}{F4 Up}
-	return
++F16::!F4
 
 F16::
-	If (WinActive("ahk_exe VmConnect.exe")) {
-		WinActivate, ahk_exe mmc.exe
+	If WinActive("ahk_exe VmConnect.exe") {
+		WinActivate("ahk_exe mmc.exe")
 	} else {
-		WinMinimize, A
+		WinMinimize("A")
 	}
 return
 
@@ -54,9 +37,7 @@ return
 	DllCall("AnimateWindow", "UInt", guiID, "Int", 200, "UInt", "0x50008")
 return
 
-^F15::
-	Gui, indicator:Hide
-return
+^F15::Gui, indicator:Hide
 
 +F15::
 	Gui, indicator:Show, NA
@@ -116,7 +97,7 @@ return
 	If (WinExist("ahk_exe clion64.exe")) {
 		WinActivate
 	} else {
-		Run, %A_StartMenu%\Pkg\CLion 2020.3.3.lnk, C:/
+		Run, %A_StartMenu%\Pkg\CLion 2021.2.lnk, C:/
 		WinWait, ahk_exe clion64.exe
 		WinActivate
 	}

@@ -74,6 +74,8 @@ const animateWindow = (window, duration, flag) => {
 
 // when relaunching, don't show prompt
 ahk.raw("#SingleInstance Force")
+// use the lower-level keyboard hook which shouldn't ocassionally forget modifiers
+ahk.raw("#UseHook")
 
 // must be in the auto-execute section
 ahk.raw("BrowserMode := false")
@@ -110,18 +112,15 @@ ahk.remap(['Ctrl', 'Alt', 'CapsLock'], () => {
 
 
 ahk.remap(["Ctrl", "f12"], () => ahk.raw("ExitApp"))
+ahk.remap(["Ctrl", "Alt", "f12"], () => ahk.raw("Suspend"))
+ahk.remap(["Ctrl", "Shift", "f12"], () => ahk.raw("Reload"))
 
-// allow / to open cmd in Altap Salamander
-ahk.remap('/', 'NumpadDiv')
-ahk.remap('\\', 'LWin')
-
-
-ahk.remap(["CapsLock", "="], () => {
-	ahk.raw("SendInput {Space}site:reddit.com")
+ahk.remap(["-"], () => {
+	ahk.raw("SendInput {End}{Space}site:reddit.com")
 	ahk.raw("Sleep 100")
 	ahk.raw("SendInput {Enter}")
 })
-ahk.remap(["CapsLock", "-"], () => {
+ahk.remap(["="], () => {
 	ahk.raw("SendInput /")
 	ahk.raw("Sleep 50")
 	ahk.raw("SendInput {End}{Space}{!}g{Enter}")
@@ -140,16 +139,17 @@ ahk.remap(["\\", "x"], ["LWin", "x"])
 	mapKeyToShortcut([mod, 'f'], 'firefox.exe', 'Firefox')
 	mapKeyToShortcut([mod, 'z'], 'Telegram.exe', 'Telegram')
 	mapKeyToShortcut([mod, 'k'], 'ProcessHacker.exe', 'ProcessHacker')
-	mapKeyToShortcut([mod, 't'], 'clion64.exe', 'CLion 2020.3.3')
+	mapKeyToShortcut([mod, 't'], 'clion64.exe', 'CLion 2021.2.2')
 
-	mapKeyToProgram([mod, 's'], 'salamand.exe', __dirname + '/shortcuts/Altap Salamander (x64).lnk')
+	const SHORTCUT_DIR = __dirname + "/../../data/shortcuts/"
+	mapKeyToProgram([mod, 's'], 'salamand.exe', SHORTCUT_DIR + 'Altap Salamander (x64).lnk')
 	mapKeyToProgram([mod, 'q'], 'WindowsTerminal.exe', 'wt.exe')
-	mapKeyToProgram([mod, 'a'], 'VmConnect.exe', __dirname + '/shortcuts/Hyper-V Manager.lnk')
-	mapKeyToProgram([mod, 'j'], 'Signal.exe', __dirname + '/shortcuts/Signal.lnk')
-	mapKeyToProgram([mod, 'c'], 'Spotify.exe', __dirname + '/shortcuts/Spotify.lnk')
-	mapKeyToProgram([mod, 'm'], 'msedge.exe', __dirname + '/shortcuts/Microsoft Edge.lnk')
-	mapKeyToProgram([mod, 'n'], 'Typora.exe', __dirname + '/shortcuts/Typora.lnk')
-
+	mapKeyToProgram([mod, 'a'], 'VmConnect.exe', SHORTCUT_DIR + 'Hyper-V Manager.lnk')
+	mapKeyToProgram([mod, 'j'], 'Signal.exe', SHORTCUT_DIR + 'Signal.lnk')
+	mapKeyToProgram([mod, 'c'], 'Spotify.exe', SHORTCUT_DIR + 'Spotify.lnk')
+	mapKeyToProgram([mod, 'm'], 'msedge.exe', SHORTCUT_DIR + 'Microsoft Edge.lnk')
+	mapKeyToProgram([mod, 'n'], 'Typora.exe', SHORTCUT_DIR + 'Typora.lnk')
+	
 	ahk.remap([mod, 'b'], () => {
 		ahk.if(() => ahk.win.exist('exe', 'Discord.exe'),
 			() => ahk.win.activate(),
@@ -173,8 +173,8 @@ ahk.remap(["\\", "x"], ["LWin", "x"])
 				ahk.if(() => ahk.win.exist('exe', 'idea64.exe'),
 					() => ahk.win.activate(),
 					() => {
-						ahk.runProgram(pathFromProgramName("IntelliJ IDEA"))
-						ahk.win.wait('exe', 'idea64.exe')
+						ahk.runProgram(pathFromProgramName("Visual Studio Code (VS Code)"))
+						ahk.win.wait('exe', 'Code.exe')
 						ahk.win.activate()
 					},
 				)
@@ -191,6 +191,9 @@ createBindableWindowHotkey(["Win", "3"], ["Win", "Shift", "3"])
 const MOD = 'sc056' // left backslash
 const MOD_ALT = ";"
 const MOD2 = 'CapsLock'
+
+// otherwise pressing Ctrl-MOD types a weird character
+ahk.remap(["Ctrl", MOD], () => {})
 
 const BROWSER_MODE_TOGGLE = "'"
 const NORMAL_MODE_TOGGLE = ['CapsLock', 'Escape']
@@ -210,7 +213,7 @@ const navKeys = {
 	'c': 'Down',
 	'z': 'Left',
 	'v': 'Right',
-		
+	
 	'a': 'Escape',
 	'Space': 'Enter',
 }
@@ -254,9 +257,6 @@ browserKeys = {
 	'u': ['Ctrl', 'Shift', 'l'],
 	
 	'5': ['Alt', 'Tab'],
-	
-	'-': 'LButton',
-	'=': 'RButton',
 }
 
 mod2Keys = {
@@ -287,7 +287,7 @@ mod2Keys = {
 	't': '_',
 
 	'a': '`',
-	'q': '/',
+	'q': 'NumpadDiv',
 	'z': '~',
 	'h': ':',
 	'g': '|',
@@ -348,6 +348,9 @@ ahk.ifCtx(() => ahk.raw("not BrowserMode"), () => {
 relearnRemaining(MOD2, mod2Keys)
 applyRemap(MOD2, mod2Keys, false)
 
+ahk.remap(["Shift", ","], ["—"])
+ahk.remap(["Shift", "."], ["–"])
+
 ahk.remap(['Shift', '1'], 'ů')
 ahk.remap(['Shift', '2'], 'ě')
 ahk.remap(['Shift', '3'], 'š')
@@ -361,7 +364,6 @@ ahk.remap(['Shift', '0'], 'é')
 ahk.remap(['Shift', '-'], 'ú')
 ahk.remap(['Shift', '='], 'ň')
 
-/*
 ahk.remap(['Ctrl', 'Shift', '1'], 'Ů')
 ahk.remap(['Ctrl', 'Shift', '2'], 'Ě')
 ahk.remap(['Ctrl', 'Shift', '3'], 'Š')
@@ -374,7 +376,6 @@ ahk.remap(['Ctrl', 'Shift', '9'], 'Í')
 ahk.remap(['Ctrl', 'Shift', '0'], 'É')
 ahk.remap(['Ctrl', 'Shift', '-'], 'Ú')
 ahk.remap(['Ctrl', 'Shift', '='], 'Ň')
-*/
 
 
 // add hotkey for remap in programs
@@ -390,7 +391,10 @@ ahk.remap(['`', 's'], 'ß')
 ahk.raw("]::^#Right")
 ahk.raw("[::^#Left")
 
+ahk.remap('\\', 'LWin')
+
 ahk.remap('RAlt', 'AppsKey')
+ahk.remap('/', 'F18')
 
 
 
@@ -404,9 +408,8 @@ ahk.remap('RShift', () => ahk.if(
 	() => ahk.win.minimize(null, 'A'),
 ))
 
-
-ahk.remap([MOD, 'RShift'], ['Alt', 'F4'])
-ahk.remap([MOD_ALT, 'RShift'], ['Alt', 'F4'])
+ahk.raw("`; & RShift::!F4")
+ahk.raw(MOD + " & RShift::!F4")
 
 
 // debug hotkey

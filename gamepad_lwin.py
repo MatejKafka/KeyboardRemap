@@ -1,5 +1,6 @@
 """
-Small script that remaps an extra M key on my gamepad to LWin, which is missing for some reason.
+Small script that remaps an extra B key on my gamepad to LWin, which is missing for some reason.
+Also remaps an extra M key to a modifier. 
 Uses https://github.com/cobrce/interception_py.
 """
 
@@ -25,9 +26,13 @@ if __name__ == "__main__":
         device = c.wait()
         stroke = c.receive(device)
         
-        # replace M on gamepad with LWin
-        if type(stroke) is key_stroke and device == gamepad_id and stroke.code == 50:
-            stroke.code = 0x5b
-            stroke.state += 2
+        if type(stroke) is key_stroke and device == gamepad_id:
+            if stroke.code == 48:
+                # replace B on gamepad with LWin
+                stroke.code = 0x5b
+                stroke.state += 2
+            elif stroke.code == 50:
+                # replace M with ; (custom modifier)
+                stroke.code = 39
         
         c.send(device, stroke)

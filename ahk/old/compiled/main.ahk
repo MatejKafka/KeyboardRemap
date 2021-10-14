@@ -1,5 +1,7 @@
 ﻿#SingleInstance Force
 
+#UseHook
+
 BrowserMode := false
 
 Gui, switcher:New
@@ -36,29 +38,21 @@ return
 	ExitApp
 return
 
-; hotkey: /::NumpadDiv
-	/::
-		SendInput, {Blind}{NumpadDiv Down}
-	return
-	/ Up::
-		SendInput, {Blind}{NumpadDiv Up}
-	return
+^!f12::
+	Suspend
+return
 
-; hotkey: \::LWin
-	\::
-		SendInput, {Blind}{LWin Down}
-	return
-	\ Up::
-		SendInput, {Blind}{LWin Up}
-	return
+^+f12::
+	Reload
+return
 
-CapsLock & =::
-	SendInput {Space}site:reddit.com
+-::
+	SendInput {End}{Space}site:reddit.com
 	Sleep 100
 	SendInput {Enter}
 return
 
-CapsLock & -::
+=::
 	SendInput /
 	Sleep 50
 	SendInput {End}{Space}{!}g{Enter}
@@ -148,7 +142,7 @@ return
 	If (WinExist("ahk_exe clion64.exe")) {
 		WinActivate
 	} else {
-		Run, %A_StartMenu%\Pkg\CLion 2020.3.3.lnk, C:/
+		Run, %A_StartMenu%\Pkg\CLion 2021.2.2.lnk, C:/
 		WinWait, ahk_exe clion64.exe
 		WinActivate
 	}
@@ -158,7 +152,7 @@ return
 	If (WinExist("ahk_exe salamand.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Altap Salamander (x64).lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Altap Salamander (x64).lnk, C:/
 		WinWait, ahk_exe salamand.exe
 		WinActivate
 	}
@@ -178,7 +172,7 @@ return
 	If (WinExist("ahk_exe VmConnect.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Hyper-V Manager.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Hyper-V Manager.lnk, C:/
 		WinWait, ahk_exe VmConnect.exe
 		WinActivate
 	}
@@ -188,7 +182,7 @@ return
 	If (WinExist("ahk_exe Signal.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Signal.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Signal.lnk, C:/
 		WinWait, ahk_exe Signal.exe
 		WinActivate
 	}
@@ -198,7 +192,7 @@ return
 	If (WinExist("ahk_exe Spotify.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Spotify.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Spotify.lnk, C:/
 		WinWait, ahk_exe Spotify.exe
 		WinActivate
 	}
@@ -208,7 +202,7 @@ return
 	If (WinExist("ahk_exe msedge.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Microsoft Edge.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Microsoft Edge.lnk, C:/
 		WinWait, ahk_exe msedge.exe
 		WinActivate
 	}
@@ -218,7 +212,7 @@ return
 	If (WinExist("ahk_exe Typora.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Typora.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Typora.lnk, C:/
 		WinWait, ahk_exe Typora.exe
 		WinActivate
 	}
@@ -245,8 +239,8 @@ return
 		If (WinExist("ahk_exe idea64.exe")) {
 			WinActivate
 		} else {
-			Run, %A_StartMenu%\Pkg\IntelliJ IDEA.lnk, C:/
-			WinWait, ahk_exe idea64.exe
+			Run, %A_StartMenu%\Pkg\Visual Studio Code (VS Code).lnk, C:/
+			WinWait, ahk_exe Code.exe
 			WinActivate
 		}
 	}
@@ -296,7 +290,7 @@ return
 	If (WinExist("ahk_exe clion64.exe")) {
 		WinActivate
 	} else {
-		Run, %A_StartMenu%\Pkg\CLion 2020.3.3.lnk, C:/
+		Run, %A_StartMenu%\Pkg\CLion 2021.2.2.lnk, C:/
 		WinWait, ahk_exe clion64.exe
 		WinActivate
 	}
@@ -306,7 +300,7 @@ return
 	If (WinExist("ahk_exe salamand.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Altap Salamander (x64).lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Altap Salamander (x64).lnk, C:/
 		WinWait, ahk_exe salamand.exe
 		WinActivate
 	}
@@ -326,7 +320,7 @@ return
 	If (WinExist("ahk_exe VmConnect.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Hyper-V Manager.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Hyper-V Manager.lnk, C:/
 		WinWait, ahk_exe VmConnect.exe
 		WinActivate
 	}
@@ -336,7 +330,7 @@ return
 	If (WinExist("ahk_exe Signal.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Signal.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Signal.lnk, C:/
 		WinWait, ahk_exe Signal.exe
 		WinActivate
 	}
@@ -346,7 +340,7 @@ return
 	If (WinExist("ahk_exe Spotify.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Spotify.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Spotify.lnk, C:/
 		WinWait, ahk_exe Spotify.exe
 		WinActivate
 	}
@@ -356,7 +350,7 @@ return
 	If (WinExist("ahk_exe msedge.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Microsoft Edge.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Microsoft Edge.lnk, C:/
 		WinWait, ahk_exe msedge.exe
 		WinActivate
 	}
@@ -366,7 +360,7 @@ return
 	If (WinExist("ahk_exe Typora.exe")) {
 		WinActivate
 	} else {
-		Run, D:\_custom\keyboard_remap\app\ahk/shortcuts/Typora.lnk, C:/
+		Run, D:\_custom\keyboard_remap\app\ahk/../../data/shortcuts/Typora.lnk, C:/
 		WinWait, ahk_exe Typora.exe
 		WinActivate
 	}
@@ -393,8 +387,8 @@ return
 		If (WinExist("ahk_exe idea64.exe")) {
 			WinActivate
 		} else {
-			Run, %A_StartMenu%\Pkg\IntelliJ IDEA.lnk, C:/
-			WinWait, ahk_exe idea64.exe
+			Run, %A_StartMenu%\Pkg\Visual Studio Code (VS Code).lnk, C:/
+			WinWait, ahk_exe Code.exe
 			WinActivate
 		}
 	}
@@ -428,6 +422,10 @@ return
 	WinGet, bindable_0, ID, A
 	WinGet, bind_tmp_title, ProcessName, A
 	MsgBox, Window of [%bind_tmp_title%] now bound to key combination [Win+3].
+return
+
+^sc056::
+	
 return
 
 #If BrowserMode
@@ -1195,20 +1193,6 @@ return
 		*u Up::
 			SendInput, {Blind}{Ctrl Up}{Shift Up}{l Up}
 		return
-	; hotkey: *-::LButton
-		*-::
-			SendInput, {Blind}{LButton Down}
-		return
-		*- Up::
-			SendInput, {Blind}{LButton Up}
-		return
-	; hotkey: *=::RButton
-		*=::
-			SendInput, {Blind}{RButton Down}
-		return
-		*= Up::
-			SendInput, {Blind}{RButton Up}
-		return
 #If
 
 #If not BrowserMode
@@ -1710,12 +1694,12 @@ return
 		SendInput, {Blind}{`` Up}
 	return
 
-; hotkey: CapsLock & q::/
+; hotkey: CapsLock & q::NumpadDiv
 	CapsLock & q::
-		SendInput, {Blind}{/ Down}
+		SendInput, {Blind}{NumpadDiv Down}
 	return
 	CapsLock & q Up::
-		SendInput, {Blind}{/ Up}
+		SendInput, {Blind}{NumpadDiv Up}
 	return
 
 ; hotkey: CapsLock & z::~
@@ -1788,6 +1772,22 @@ return
 	return
 	CapsLock & y Up::
 		SendInput, {Blind}{μ Up}
+	return
+
+; hotkey: +,::—
+	+,::
+		SendInput, {Blind}{— Down}
+	return
+	+, Up::
+		SendInput, {Blind}{— Up}
+	return
+
+; hotkey: +.::–
+	+.::
+		SendInput, {Blind}{– Down}
+	return
+	+. Up::
+		SendInput, {Blind}{– Up}
 	return
 
 ; hotkey: +1::ů
@@ -1886,6 +1886,102 @@ return
 		SendInput, {Blind}{ň Up}
 	return
 
+; hotkey: ^+1::Ů
+	^+1::
+		SendInput, {Blind}{Ů Down}
+	return
+	^+1 Up::
+		SendInput, {Blind}{Ů Up}
+	return
+
+; hotkey: ^+2::Ě
+	^+2::
+		SendInput, {Blind}{Ě Down}
+	return
+	^+2 Up::
+		SendInput, {Blind}{Ě Up}
+	return
+
+; hotkey: ^+3::Š
+	^+3::
+		SendInput, {Blind}{Š Down}
+	return
+	^+3 Up::
+		SendInput, {Blind}{Š Up}
+	return
+
+; hotkey: ^+4::Č
+	^+4::
+		SendInput, {Blind}{Č Down}
+	return
+	^+4 Up::
+		SendInput, {Blind}{Č Up}
+	return
+
+; hotkey: ^+5::Ř
+	^+5::
+		SendInput, {Blind}{Ř Down}
+	return
+	^+5 Up::
+		SendInput, {Blind}{Ř Up}
+	return
+
+; hotkey: ^+6::Ž
+	^+6::
+		SendInput, {Blind}{Ž Down}
+	return
+	^+6 Up::
+		SendInput, {Blind}{Ž Up}
+	return
+
+; hotkey: ^+7::Ý
+	^+7::
+		SendInput, {Blind}{Ý Down}
+	return
+	^+7 Up::
+		SendInput, {Blind}{Ý Up}
+	return
+
+; hotkey: ^+8::Á
+	^+8::
+		SendInput, {Blind}{Á Down}
+	return
+	^+8 Up::
+		SendInput, {Blind}{Á Up}
+	return
+
+; hotkey: ^+9::Í
+	^+9::
+		SendInput, {Blind}{Í Down}
+	return
+	^+9 Up::
+		SendInput, {Blind}{Í Up}
+	return
+
+; hotkey: ^+0::É
+	^+0::
+		SendInput, {Blind}{É Down}
+	return
+	^+0 Up::
+		SendInput, {Blind}{É Up}
+	return
+
+; hotkey: ^+-::Ú
+	^+-::
+		SendInput, {Blind}{Ú Down}
+	return
+	^+- Up::
+		SendInput, {Blind}{Ú Up}
+	return
+
+; hotkey: ^+=::Ň
+	^+=::
+		SendInput, {Blind}{Ň Down}
+	return
+	^+= Up::
+		SendInput, {Blind}{Ň Up}
+	return
+
 ; hotkey: *`::F13
 	*`::
 		SendInput, {Blind}{F13 Down}
@@ -1898,12 +1994,28 @@ return
 
 [::^#Left
 
+; hotkey: \::LWin
+	\::
+		SendInput, {Blind}{LWin Down}
+	return
+	\ Up::
+		SendInput, {Blind}{LWin Up}
+	return
+
 ; hotkey: RAlt::AppsKey
 	RAlt::
 		SendInput, {Blind}{AppsKey Down}
 	return
 	RAlt Up::
 		SendInput, {Blind}{AppsKey Up}
+	return
+
+; hotkey: /::F18
+	/::
+		SendInput, {Blind}{F18 Down}
+	return
+	/ Up::
+		SendInput, {Blind}{F18 Up}
 	return
 
 RShift::
@@ -1914,21 +2026,9 @@ RShift::
 	}
 return
 
-; hotkey: >+sc056::!F4
-	>+sc056::
-		SendInput, {Blind}{Alt Down}{F4 Down}
-	return
-	>+sc056 Up::
-		SendInput, {Blind}{Alt Up}{F4 Up}
-	return
+`; & RShift::!F4
 
-; hotkey: >+`;::!F4
-	>+`;::
-		SendInput, {Blind}{Alt Down}{F4 Down}
-	return
-	>+`; Up::
-		SendInput, {Blind}{Alt Up}{F4 Up}
-	return
+sc056 & RShift::!F4
 
 Ctrl & RShift::
 	WinGet, active_id, ProcessName, A
