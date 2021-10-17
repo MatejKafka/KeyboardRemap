@@ -1,17 +1,35 @@
-DetectHiddenWindows "On"
+; this is necessary, as otherwise windows on other virtual desktops are not detected
+; however, each visible GUI window apparently also has multiple supporting invisible windows, running under the same process
+; therefore, when searching for a window, we'll list all windows under the process, and find the visible one and activate it
+DetectHiddenWindows True
 
-ActivateProgram(programWindowName, programPath) {
-	winNames := IsObject(programWindowName) ? programWindowName : [programWindowName]
+TryFocusProgram(winNames) {
 	for (winName in winNames) {
-		if (!WinExist("ahk_exe " . winName)) {
-			continue
+		Hwnds := WinGetList("ahk_exe " . winName)
+		if (Hwnds.Length = 0) {
+			continue ; no matching windows
 		}
-		WinActivate
-		return
+		; find a visible window running under the process
+		for Hwnd in Hwnds {
+			; 0x10000000 = WS_VISIBLE (the window is visible)
+			if (WinGetStyle(Hwnd) & 0x10000000) {
+				WinActivate(Hwnd)
+				return true
+			}
+		}
 	}
+	return false
+}
+
+ActivateProgram(winNames, programPath) {
+	winNames := IsObject(winNames) ? winNames : [winNames]
+	if (TryFocusProgram(winNames)) {
+		return ; found an existing window and focused it
+	}
+	; we did not find any matching window, run the program
 	Run(programPath)
 	WinWait("ahk_exe " . winNames[1])
-	WinActivate
+	TryFocusProgram(winNames)
 }
 
 ActivatePkgShortcut(programWindowName, programLnkName) {
