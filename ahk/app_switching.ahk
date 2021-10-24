@@ -1,4 +1,4 @@
-; this is necessary, as otherwise windows on other virtual desktops are not detected
+; this is necessary, as otherwise windows on other virtual desktops are not detected (Win 10 21H1)
 ; however, each visible GUI window apparently also has multiple supporting invisible windows, running under the same process
 ; therefore, when searching for a window, we'll list all windows under the process, and find the visible one and activate it
 DetectHiddenWindows True
@@ -28,7 +28,10 @@ ActivateProgram(winNames, programPath) {
 	}
 	; we did not find any matching window, run the program
 	Run(programPath)
+	; we want to wait for a visible window, which will be on our virtual desktop, so this is ok
+	DetectHiddenWindows False
 	WinWait("ahk_exe " . winNames[1])
+	DetectHiddenWindows True
 	TryFocusProgram(winNames)
 }
 
@@ -79,7 +82,12 @@ ActivateCustomShortcut(programWindowName, programLnkName) {
 \ & c::
 #c::ActivateCustomShortcut("Spotify.exe", "Spotify")
 \ & m::
-#m::ActivateCustomShortcut("msedge.exe", "Microsoft Edge")
+#m:: {
+	; for Edge, I want to only find windows on the same virtual desktop
+	DetectHiddenWindows False
+	ActivateCustomShortcut("msedge.exe", "Microsoft Edge (InPrivate)")
+	DetectHiddenWindows True
+}
 \ & n::
 #n::ActivateCustomShortcut("Typora.exe", "Typora")
 \ & h::
