@@ -6,7 +6,7 @@ gui_switcher.Show("Hide x0 y1030 w1920 h50")
 gui_indicator := Gui()
 gui_indicator.Opt("+AlwaysOnTop +ToolWindow -DPIScale -0xC00000 +E0x08000000")
 gui_indicator.BackColor := 0x900000
-gui_indicator.Show("x1899 y1030 w21 h50")
+gui_indicator.Show("x1899 y1030 w21 h50 NA") ; NA so that it doesn't draw focus
 
 ; hide mode indicator
 ^PrintScreen::gui_indicator.Hide()
