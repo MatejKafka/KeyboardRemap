@@ -1,4 +1,4 @@
-CapsLock & q::NumpadDiv
+CapsLock & q::/
 CapsLock & w::`;
 CapsLock & e::[
 CapsLock & r::]

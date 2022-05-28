@@ -1,9 +1,19 @@
 # KeyboardRemap
 
-My custom keyboard remap, in two versions:
+My custom keyboard remap, using AutoHotkey v2. See below for layout diagrams and explanation.
 
- 1) The main version uses a combination of [Capsicain](https://github.com/cajhin/capsicain) and [AutoHotkey v1](https://www.autohotkey.com/), which is more reliable.
- 2) The old version is AutoHotkey-only; it is  not maintained, but currently still mostly up-to-date with the main version.
+Historically, there were 3 versions of the remap:
+
+1. The original one, implemented in Javascript and compiled to AHK using `js2ahk` ([main.ahk.js](https://github.com/MatejKafka/KeyboardRemap/blob/274d2f85e94fe2a98ffa254e6f5f0856727f10c6/ahk/main.ahk.js)).
+2. An updated version combining [Capsicain](https://github.com/cajhin/capsicain) and [AutoHotkey v1](https://www.autohotkey.com/). This one was more reliable, but I didn't like using a half-unmaintained kernel driver (Interception) just to remap my keyboard, and the driver seemed to occasionally cause BSODs on my machine. (commit [7cf9c80](https://github.com/MatejKafka/KeyboardRemap/tree/7cf9c80154a1865a8b55236941e6058672a022a5))
+3. The current version, using [AutoHotkey v2](https://www.autohotkey.com/v2/), with no external dependencies.
+
+## Usage
+
+1. Install [AutoHotkey v2](https://www.autohotkey.com/v2/).
+2. Clone this repository, or [download the latest release](https://github.com/MatejKafka/KeyboardRemap/releases).
+3. Run `setup_remap.cmd`.
+4. If the script ran correctly, a small red indicator should appear in the bottom right corner of your screen and the hotkeys should now work.
 
 ## Layout diagrams
 
@@ -63,12 +73,3 @@ This is just an overview, for the current exact bindings, read the source code. 
  - **Window switching using hotkeys:** `Win-f` = Firefox, `Win-c` = Spotify,...; if the window exists, it is focused, otherwise the app is started (you may need to adjust the exe paths for your system)
  - Virtual desktop switching using `[` and `]`
  - `RShift` = minimize current window, `;-RShift` = close current window
-
-## Usage
-
-Apologies, this is not very streamlined. If you want to try the config and something doesn't work, open an issue and I'll try to improve this a bit. Afaik, I'm currently the only user, so I don't have much motivation to polish the setup. :)
-
-First, start Capsicain by moving/symlinking the `capsicain.ini` from this repo to the Capsicain installation dir and then running `capsicain.exe`.
-
-Second, start the AutoHotkey part by running `./ahk/compiled/capsicain.ahk` directly using AutoHotkey. Alternatively, install [`js2ahk`](https://github.com/MatejKafka/js2ahk) (mostly abandoned, but I still use it), adjust the path in `./ahk/ahkCapsicain.cmd` and then run it — it compiles the `capsicain.ahk.js` file and then runs the resulting `capsicain.ahk` file.
-
