@@ -31,7 +31,7 @@ This layer is active by default.
 
 ### Accents
 
-I use the following `Shift-?` an `Ctrl-Shift-?` key combinations to type most of the Czech accents and em-dash + en-dash.
+I use the following `Shift + ?` and `ISO\ + ?` number key combinations to type most of the Czech accents.
 
 ![Czech accent layer](./layout_diagram/czech_accents.png)
 

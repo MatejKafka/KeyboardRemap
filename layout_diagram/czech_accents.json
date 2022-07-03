@@ -3,29 +3,30 @@
     {
       "x": 1
     },
-    "ů\nŮ",
-    "ě\nĚ",
-    "š\nŠ",
-    "č\nČ",
-    "ř\nŘ",
-    "ž\nŽ",
-    "ý\nÝ",
-    "á\nÁ",
-    "í\nÍ",
-    "é\nÉ"
+    "Ů\nů",
+    "Ě\ně",
+    "Š\nš",
+    "Č\nč",
+    "Ř\nř",
+    "Ž\nž",
+    "Ý\ný",
+    "Á\ná",
+    "Í\ní",
+    "É\né"
   ],
   [
     {
       "y": 2,
-      "x": 1,
-      "w": 7,
-      "h": 2
+      "w": 1.25
     },
-    "pres Shift to type the upper char\n\n\n\n\n\nPress Ctrl-Shift to type the lower char",
+    "Shift",
+    "Mod\n\n\n\n\n\nNav",
     {
-      "x": 1.25
+      "x": 1.5,
+      "w": 8,
+      "h": 1.5,
+      "d": true
     },
-    "— (em-dash)",
-    "–&nbsp&nbsp (en-dash)"
+    "Press Shift to type the lowercase char<br><br>Press ModNav (next to left Shift) to type the uppercase char"
   ]
 ]

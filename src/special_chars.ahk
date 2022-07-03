@@ -45,6 +45,7 @@ CapsLock & =::return
 CapsLock & Space::Backspace
 CapsLock & Tab::Delete
 
+
 +1::ů
 +2::ě
 +3::š
@@ -58,15 +59,17 @@ CapsLock & Tab::Delete
 +-::ú
 +=::ň
 
-^+1::Ů
-^+2::Ě
-^+3::Š
-^+4::Č
-^+5::Ř
-^+6::Ž
-^+7::Ý
-^+8::Á
-^+9::Í
-^+0::É
-^+-::Ú
-^+=::Ň
+; use \ as the modifier; it is normally only used for navigation keys, but it's more ergonomic than Ctrl+Shift+number
+;  (and also doesn't collide with app bindings like IDEA),  and remapping Shift+CapsLock+number is quite hard
+sc056 & 1::Ů
+sc056 & 2::Ě
+sc056 & 3::Š
+sc056 & 4::Č
+sc056 & 5::Ř
+sc056 & 6::Ž
+sc056 & 7::Ý
+sc056 & 8::Á
+sc056 & 9::Í
+sc056 & 0::É
+sc056 & -::Ú
+sc056 & =::Ň

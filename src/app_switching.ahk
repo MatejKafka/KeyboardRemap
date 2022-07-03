@@ -69,7 +69,7 @@ ActivateCustomShortcut(programWindowSpecifiers, programLnkName, arguments := "")
 \ & i::#i
 
 \ & f::
-#f::ActivatePogShortcut("ahk_exe firefox.exe", "Firefox")
+#f::ActivatePogShortcut("ahk_exe firefox.exe", "Firefox Nightly")
 \ & w::
 #w::ActivatePogShortcut(["ahk_exe Code.exe", "ahk_exe WINWORD.EXE"], "Visual Studio Code (VS Code)")
 \ & z::
@@ -77,7 +77,7 @@ ActivateCustomShortcut(programWindowSpecifiers, programLnkName, arguments := "")
 \ & k::
 #k::ActivatePogShortcut("ahk_exe ProcessHacker.exe", "ProcessHacker")
 \ & t::
-#t::ActivatePogShortcut(["ahk_exe clion64.exe", "ahk_exe idea64.exe"], "CLion")
+#t::ActivatePogShortcut(["ahk_exe clion64.exe", "ahk_exe idea64.exe", "ahk_exe rider64.exe"], "CLion")
 \ & o::
 #o::ActivatePogShortcut("ahk_exe notepad++.exe", "Notepad++")
 \ & b::
