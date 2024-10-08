@@ -5,9 +5,6 @@ DetectHiddenWindows(True)
 
 TryFocusWindowSingle(winSpecifier) {
 	Hwnds := WinGetList(winSpecifier)
-	if (Hwnds.Length = 0) {
-		return false ; no matching windows
-	}
 	; find a visible window running under the process
 	for Hwnd in Hwnds {
 		; 0x10000000 = WS_VISIBLE (the window is visible)
@@ -16,6 +13,7 @@ TryFocusWindowSingle(winSpecifier) {
 			return true
 		}
 	}
+	return false ; no matching windows
 }
 
 TryFocusWindow(winSpecifiers) {
@@ -57,36 +55,40 @@ ActivateCustomShortcut(programWindowSpecifiers, programLnkName, arguments := "")
 
 \::LWin
 
-;#e::#e
 \ & e::#e
-;#r::#r
 \ & r::#r
-;#v::#v
-;\ & v::#v
-#d::#d
+\ & v::#v
 \ & d::#d
-#i::#i
 \ & i::#i
+#HotIf navMode
+	#e::#e
+	#r::#r
+	;#v::#v
+	;#d::#d
+	#i::#i
+#HotIf
 
 \ & f::
 #f::ActivatePogShortcut("ahk_exe firefox.exe", "Firefox Nightly")
++#f::ActivatePogShortcut("Private Browsing ahk_exe firefox.exe", "Firefox Nightly", "-private-window")
 \ & w::
 #w::ActivatePogShortcut(["ahk_exe Code.exe", "ahk_exe WINWORD.EXE"], "Visual Studio Code (VS Code)")
 \ & z::
 #z::ActivatePogShortcut("ahk_exe Telegram.exe", "Telegram")
 \ & k::
-#k::ActivatePogShortcut("ahk_exe ProcessHacker.exe", "ProcessHacker")
+#k::ActivatePogShortcut("ahk_exe SystemInformer.exe", "SystemInformer")
 \ & t::
 #t::ActivatePogShortcut(["ahk_exe clion64.exe", "ahk_exe idea64.exe", "ahk_exe rider64.exe"], "CLion")
++#t::ActivatePogShortcut("ahk_exe rider64.exe", "JetBrains Rider")
 \ & o::
-#o::ActivatePogShortcut("ahk_exe notepad++.exe", "Notepad++")
+#o::ActivatePogShortcut(["ahk_exe sublime_text.exe", "ahk_exe notepad++.exe"], "Sublime Text")
 \ & b::
 #b::ActivatePogShortcut(["ahk_exe Discord.exe", "ahk_exe Ripcord.exe"], "Discord")
-
 \ & q::
-#q::ActivateProgram("ahk_exe WindowsTerminal.exe", "wt.exe")
+#q::ActivatePogShortcut("ahk_exe WindowsTerminal.exe", "Terminal")
+
 \ & s::
-#s::ActivateCustomShortcut("ahk_exe salamand.exe", "Altap Salamander (x64)")
+#s::ActivateCustomShortcut(["ahk_exe salamand.exe", "ahk_exe WinSCP.exe"], "Altap Salamander (x64)")
 \ & a::
 #a::ActivateCustomShortcut("ahk_exe VmConnect.exe", "Hyper-V Manager")
 \ & j::
@@ -114,8 +116,4 @@ ActivateCustomShortcut(programWindowSpecifiers, programLnkName, arguments := "")
 	ActivateCustomShortcut("[InPrivate] ahk_exe msedge.exe", "Microsoft Edge",
 			"--profile-directory=`"Profile 1`" --inprivate")
 	DetectHiddenWindows True
-}
-
-+#f:: {
-	ActivatePogShortcut("(Private Browsing) ahk_exe firefox.exe", "Firefox", "-private-window")
 }
