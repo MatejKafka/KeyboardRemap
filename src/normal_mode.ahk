@@ -32,3 +32,6 @@ sc056 & c::Down
 sc056 & v::Right
 sc056 & a::Escape
 sc056 & Space::Enter
+
+CapsLock & Up::Click("0 0 WheelUp 1 Relative")
+CapsLock & Down::Click("0 0 WheelDown 1 Relative")
