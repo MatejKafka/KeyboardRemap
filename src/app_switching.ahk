@@ -3,17 +3,38 @@
 ; therefore, when searching for a window, we'll list all windows under the process, and find the visible one and activate it
 DetectHiddenWindows(True)
 
-TryFocusWindowSingle(winSpecifier) {
-	Hwnds := WinGetList(winSpecifier)
-	; find a visible window running under the process
-	for Hwnd in Hwnds {
-		; 0x10000000 = WS_VISIBLE (the window is visible)
-		if (WinGetStyle(Hwnd) & 0x10000000) {
-			WinActivate(Hwnd)
-			return true
+Filter(this, fn) {
+	res := []
+	for v in this {
+		if (fn(v)) {
+			res.Push(v)
 		}
 	}
-	return false ; no matching windows
+	return res
+}
+
+TryFocusWindowSingle(winSpecifier) {
+	try {
+		CurrentHwnd := WinGetID("A")
+	} catch {
+		CurrentHwnd := 0
+	}
+
+	; 0x10000000 = WS_VISIBLE (the window is visible)
+	Hwnds := Filter(WinGetList(winSpecifier), (Hwnd) => WinGetStyle(Hwnd) & 0x10000000)
+
+	if (Hwnds.Length = 0) {
+		return false ; no matching windows
+	}
+
+	if (Hwnds[1] != CurrentHwnd) {
+		; non-matching window is currently focused, focus the first matching one
+		WinActivate(Hwnds[1])
+	} else {
+		; already focused, switch to the next matching window, if there's any
+		WinActivate(Hwnds[Hwnds.Length])
+	}
+	return true
 }
 
 TryFocusWindow(winSpecifiers) {
