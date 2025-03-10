@@ -1,6 +1,10 @@
 #SingleInstance Force
 #UseHook
-SendMode "Input"
+
+; see the following link for explanation of why we're using SendEvent instead of SendInput (the default):
+;  https://www.autohotkey.com/boards/viewtopic.php?f=96&t=127074
+SendMode "Event"
+SetKeyDelay(-1, 0)
 
 ^-::ExitApp
 ^+-::Reload
@@ -55,35 +59,35 @@ sc056 & RShift::!F4
 
 #HotIf WinActive("ahk_exe firefox.exe") or WinActive("ahk_exe msedge.exe")
 	-:: {
-		Send "{End}{Space}site:reddit.com"
+		SendInput "{End}{Space}site:reddit.com"
 		Sleep 200
-		Send "{Enter}"
+		SendInput "{Enter}"
 	}
 	!-:: {
-		Send "{End}{Space}site:news.ycombinator.com"
+		SendInput "{End}{Space}site:news.ycombinator.com"
 		Sleep 200
-		Send "{Enter}"
+		SendInput "{Enter}"
 	}
 	!+=:: {
-		Send "^l"
+		SendInput "^l"
 		Sleep 50
-		Send "{Home}https://web.archive.org/web/*/{Enter}"
+		SendInput "{Home}https://web.archive.org/web/*/{Enter}"
 	}
 	=:: {
-		Send "/"
+		SendInput "/"
 		Sleep 50
-		Send "{End}{Space}{!}g{Enter}"
+		SendInput "{End}{Space}{!}g{Enter}"
 	}
 	!=:: {
-		Send "^l"
+		SendInput "^l"
 		Sleep 50
-		Send "{Home}farside.link/_/{Enter}"
+		SendInput "{Home}farside.link/_/{Enter}"
 	}
 #HotIf
 
 #HotIf WinActive("ahk_exe explorer.exe")
 	; simplest way I found to reliably create a new text file
-	^q::Send "!hw{Up}{Up}{Enter}"
+	^q::SendInput "!hw{Up}{Up}{Enter}"
 #HotIf
 
 #HotIf WinActive("ahk_exe salamand.exe")
