@@ -16,6 +16,11 @@ gui_indicator.Show("x" x_pos " y" y_pos " w21 h50 NA") ; NA so that it doesn't d
 ; show mode indicator
 +PrintScreen::gui_indicator.Show("NA")
 
+; 0x7E = WM_DISPLAYCHANGE (display configuration changed, triggered when a monitor is (dis)connected)
+OnMessage(0x007E, WM_DISPLAYCHANGE)
+WM_DISPLAYCHANGE(wParam, lParam, msg, hwnd) {
+	Reload()
+}
 
 UpdateGuiModeIndicator() {
 	gui_indicator.BackColor := navMode ? "green" : 0x900000
