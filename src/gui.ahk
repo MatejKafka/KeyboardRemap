@@ -19,6 +19,9 @@ gui_indicator.Show("x" x_pos " y" y_pos " w21 h50 NA") ; NA so that it doesn't d
 ; 0x7E = WM_DISPLAYCHANGE (display configuration changed, triggered when a monitor is (dis)connected)
 OnMessage(0x007E, WM_DISPLAYCHANGE)
 WM_DISPLAYCHANGE(wParam, lParam, msg, hwnd) {
+	; need a delay before the Reload, since apparently AHK receives multiple events in quick succession,
+	;  and without the delay, it creates ~3 new duplicate AHK processes instead of just one
+	Sleep(1000)
 	Reload()
 }
 
