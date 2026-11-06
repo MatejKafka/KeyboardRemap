@@ -98,9 +98,14 @@ ActivateCustomShortcut(programWindowSpecifiers, programLnkName, arguments := "")
 	#i::#i
 #HotIf
 
+; by default, Firefox starts in troubleshooting mode if Shift is held during startup
+; this env var disables that since some of the shortcuts below use shift
+EnvSet("MOZ_DISABLE_SAFE_MODE_KEY", "1")
+
 \ & f::
 #f::ActivatePogShortcut("ahk_exe firefox.exe ahk_exclude Private Browsing", "Firefox Nightly")
 +#f::ActivatePogShortcut("Private Browsing ahk_exe firefox.exe", "Firefox Nightly", "--private-window")
++#p::ActivatePogShortcut("Private Browsing ahk_exe firefox.exe ahk_exclude Firefox Nightly", "Firefox", "--private-window")
 \ & w::
 #w::ActivatePogShortcut(["ahk_exe Code.exe", "ahk_exe WINWORD.EXE"], "Visual Studio Code (VS Code)")
 \ & z::
