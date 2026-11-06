@@ -14,6 +14,15 @@ Filter(this, fn) {
 }
 
 TryFocusWindowSingle(winSpecifier) {
+	; expand the WinTitle syntax to support `ahk_exclude` to specify the ExcludeTitle param
+	Parts := StrSplit(winSpecifier, "ahk_exclude", " ", 2)
+	IncludeSpecifier := Parts[1]
+	if (Parts.Length == 2) {
+		ExcludeSpecifier := Parts[2]
+	} else {
+		ExcludeSpecifier := ""
+	}
+
 	try {
 		CurrentHwnd := WinGetID("A")
 	} catch {
@@ -21,7 +30,7 @@ TryFocusWindowSingle(winSpecifier) {
 	}
 
 	; 0x10000000 = WS_VISIBLE (the window is visible)
-	Hwnds := Filter(WinGetList(winSpecifier), (Hwnd) => WinGetStyle(Hwnd) & 0x10000000)
+	Hwnds := Filter(WinGetList(IncludeSpecifier, "", ExcludeSpecifier), (Hwnd) => WinGetStyle(Hwnd) & 0x10000000)
 
 	if (Hwnds.Length = 0) {
 		return false ; no matching windows
@@ -90,8 +99,8 @@ ActivateCustomShortcut(programWindowSpecifiers, programLnkName, arguments := "")
 #HotIf
 
 \ & f::
-#f::ActivatePogShortcut("ahk_exe firefox.exe", "Firefox Nightly")
-+#f::ActivatePogShortcut("Private Browsing ahk_exe firefox.exe", "Firefox Nightly", "-private-window")
+#f::ActivatePogShortcut("ahk_exe firefox.exe ahk_exclude Private Browsing", "Firefox Nightly")
++#f::ActivatePogShortcut("Private Browsing ahk_exe firefox.exe", "Firefox Nightly", "--private-window")
 \ & w::
 #w::ActivatePogShortcut(["ahk_exe Code.exe", "ahk_exe WINWORD.EXE"], "Visual Studio Code (VS Code)")
 \ & z::
