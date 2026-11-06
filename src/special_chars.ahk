@@ -86,3 +86,11 @@ sc056 & =::Ň
 `; & 0::É
 `; & -::Ú
 `; & =::Ň
+
+PrintScreen & o::ó
+PrintScreen & d::ď
+PrintScreen & t::ť
+PrintScreen & n::ň
+PrintScreen & e::é
+PrintScreen & r::ř
+PrintScreen & u::ú
